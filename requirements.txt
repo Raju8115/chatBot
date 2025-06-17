@@ -1,3 +1,4 @@
+fastapi
+uvicorn
 langchain_ibm
-ibm_watsonx_ai
-python-dotenv
+ibm-watsonx-ai
