@@ -12,6 +12,8 @@ parameters = TextChatParameters(
     top_p=1,
 )
 
+VALID_TOKEN = "my-secret-token"
+
 # Initialize model
 watsonx_llm = ChatWatsonx(
     model_id="meta-llama/llama-3-3-70b-instruct",
