@@ -1,0 +1,3 @@
+flask
+langchain_ibm
+ibm-watsonx-ai
