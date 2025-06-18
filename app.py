@@ -41,3 +41,5 @@ def ask():
 def root():
     return jsonify({"status": "Chat API is running"})
 
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
