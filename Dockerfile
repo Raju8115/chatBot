@@ -1,14 +1,8 @@
-# Use slim Debian-based Python image (apt-get works here)
+# Use slim Debian-based Python image
 FROM python:3.10-slim
 
 # Set working directory
 WORKDIR /app
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
 COPY requirements.txt .
@@ -17,8 +11,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy app source
 COPY . .
 
-# Expose port
-EXPOSE 8080
+# Render assigns a dynamic port via $PORT
+ENV PORT=8080
 
-# Run Flask app
-CMD ["python", "app.py"]
+# Expose the Render port (not strictly required, but good practice)
+EXPOSE $PORT
+
+# Run Flask app with gunicorn (better for production than plain python)
+CMD ["gunicorn", "-b", "0.0.0.0:${PORT}", "app:app"]
