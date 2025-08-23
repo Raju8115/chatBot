@@ -67,7 +67,10 @@ def query_db():
         return jsonify({"result": interpreted})
 
     except Exception as e:
-        return jsonify({"error": str(e), "sql": sql}), 400
+        return jsonify({
+            "result": [["Sorry, I couldn’t find that information in the database."]],
+            "error": str(e)
+        }), 200
 
 if __name__ == "__main__":
     app.run(port=8080, debug=True)
