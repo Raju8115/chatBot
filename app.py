@@ -31,8 +31,8 @@ def llm_interpret(question, result):
     model = getModel()
     prompt = (
         f"You are an expert data analyst. "
-        f"Given the query result below for quesiton {question}, explain its meaning clearly and naturally in plain English. "
-        f"Do not mention the original question or the result explicitly and dont say like its hard to intepret or confusion just if you know just provide a direct , easy-to-understand explanation.\n\n"
+        f"Given the query result below for quesiton {question}, provide the result in formatted way without paragaph of explanation "
+        f"Do not mention the original question or the result explicitly and dont say like its hard to intepret or confusion just if you know just provide a direct , easy-to-understand formated response.\n\n"
         f"Data:\n{result}"
     )
     response = model.chat([{"role": "user", "content": prompt}])
