@@ -161,7 +161,8 @@ Table: PRACTICE_PRODUCT_TECHNOLOGY
 5. Always generate a **valid DB2 SQL query** with proper JOINs between USERS and the relevant tables.  
 6. If multiple tables are relevant, UNION results with consistent column names.  
 7. Return **only the SQL query**, no explanations and ending with semicolon.  
-
+8. Always generate queries only using columns that exist in the schema provided.
+If a requested field is not present, do not guess column names. Instead, map the intent to the most relevant existing column.
 ---
 
 ### Query to Generate:  
