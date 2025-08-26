@@ -43,6 +43,7 @@ Table: USERS
 - ID: BIGINT (Primary key)  
 - NAME: VARCHAR  
 - SLACK_ID: VARCHAR  
+- MANAGER_NAME: VARCHAR
 
 Table: PROFESSIONAL_CERTIFICATIONS  
 - Stores professional certifications of a user.  
