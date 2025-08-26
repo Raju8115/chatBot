@@ -11,18 +11,18 @@ load_dotenv()
 _model_instance = None
 
 def getModel():
-    """Singleton pattern for model instance"""
+    """Singleton pattern for Watsonx model instance"""
     global _model_instance
     if _model_instance is None:
         try:
             creds = Credentials(
-                url="https://us-south.ml.cloud.ibm.com",
-                api_key="PcGE9arNV4hnObq1jwBJRQiYXDY-f7RqY8sHG6TghfV7",
+                url="https://ca-tor.ml.cloud.ibm.com",
+                api_key="6gq4j-xBSYD1Oi0RUz-4ZXqO8BpIEGL9eFZe7irI7PbQ",
             )
             _model_instance = ModelInference(
                 model_id="meta-llama/llama-3-3-70b-instruct",
                 credentials=creds,
-                project_id="5170a7eb-1f1d-44c4-ab5d-c07aecfdf32a",
+                project_id="f06b08b3-b5a1-4c67-ae23-92ce02754a66",
             )
         except Exception as e:
             print("Error initializing model:", str(e))
