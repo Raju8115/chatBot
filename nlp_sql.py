@@ -17,7 +17,7 @@ def getModel():
         try:
             creds = Credentials(
                 url="https://ca-tor.ml.cloud.ibm.com",
-                api_key="6gq4j-xBSYD1Oi0RUz-4ZXqO8BpIEGL9eFZe7irI7PbQ",
+                api_key="UOtMgA5jazmnI2PsrmBa9s18jIfqGRBVKrapNaxrF0V6",
             )
             _model_instance = ModelInference(
                 model_id="meta-llama/llama-3-3-70b-instruct",
