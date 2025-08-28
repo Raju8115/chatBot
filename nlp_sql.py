@@ -174,6 +174,21 @@ Table: PRACTICE_PRODUCT_TECHNOLOGY
 13. Prefer simple SELECT statements. 
 14. Always return SQL that can run without syntax errors in Db2.
 
+When using UNION (or any set operator), 
+- Always project exactly the same number of columns in every SELECT. 
+- The column order and names must be identical. 
+- If a table does not have a column, use NULL or a literal as a placeholder with the correct alias. 
+
+Example:
+SELECT 'USER_CREDENTIALS' AS source_table, CREDENTIAL_LABEL AS achievement_title, CREDENTIAL_STATUS AS status
+FROM USER_CREDENTIALS
+UNION ALL
+SELECT 'PROFESSIONAL_CERTIFICATIONS' AS source_table, TITLE AS achievement_title, NULL AS status
+FROM PROFESSIONAL_CERTIFICATIONS;
+
+This ensures all SELECTs have consistent columns.
+
+
 ### STRICTLY USE THE ABOVE GIVEN INSTRUCTION ###
 
 ### Query to Generate:  
