@@ -151,20 +151,30 @@ Table: PRACTICE_PRODUCT_TECHNOLOGY
 ### INSTRUCTIONS FOR QUERY GENERATION ###
 
 1. Always **start from USERS** to filter by user name or email.  
-2. When the request involves **certifications, credentials, or skills**, check across **all relevant tables**:  
-   - PROFESSIONAL_CERTIFICATIONS → professional certifications (TITLE, CERTIFICATION_LEVEL).  
-   - USER_CREDENTIALS → digital credentials (CREDENTIAL_LABEL, CREDENTIAL_TYPE, CREDENTIAL_STATUS).  
-   - USER_ANCILLARY_SKILLS → additional certifications/skills (PRODUCT, TECHNOLOGY, CERTIFICATION_LEVEL).  
-   - USER_SECONDARY_SKILLS → secondary skills and certifications (PRACTICE, PRACTICE_AREA, PRODUCTS_TECHNOLOGIES).  
-3. If the query involves **skills/projects**, use:  
-   - USER_SKILL and USER_SKILL_INFO (joined with PRACTICE, PRACTICE_AREA, PRACTICE_PRODUCT_TECHNOLOGY for details).  
-4. If the query involves **high impact work/assets**, use HIGH_IMPACT_ASSETS.  
-5. Always generate a **valid DB2 SQL query** with proper JOINs between USERS and the relevant tables.  
-6. If multiple tables are relevant, UNION results with consistent column names.  
-7. Return **only the SQL query**, no explanations and ending with semicolon.  
-8. Always generate queries only using columns that exist in the schema provided.
-If a requested field is not present, do not guess column names. Instead, map the intent to the most relevant existing column.
----
+2. Use **only the columns and tables listed in the SCHEMA DETAILS above**.  
+   - ❌ Do NOT invent new columns.  
+   - ❌ Do NOT assume a `TITLE` column exists if it is not explicitly in the schema.  
+   - ✅ If the request mentions a field that does not exist, map it to the most relevant available column.  
+   - If no relevant mapping exists, generate a query that returns an empty result set, e.g. `SELECT * FROM USERS WHERE 1=0;`  
+3. When the request involves **certifications, credentials, or skills**, check across:  
+   - PROFESSIONAL_CERTIFICATIONS → TITLE, CERTIFICATION_LEVEL, CERTIFICATION_LINK, CERTIFIED  
+   - USER_CREDENTIALS → CREDENTIAL_LABEL, CREDENTIAL_TYPE, CREDENTIAL_STATUS, CREDENTIAL_DATE, CREDENTIAL_EXPIRY_DATE  
+   - USER_ANCILLARY_SKILLS → PRODUCT, TECHNOLOGY, CERTIFICATION_LEVEL, CERTIFICATION_LINK, CERTIFIED, RECENCY_OF_CERTIFICATION  
+   - USER_SECONDARY_SKILLS → PRACTICE, PRACTICE_AREA, PRODUCTS_TECHNOLOGIES, CERTIFICATION_LEVEL, RECENCY_OF_CERTIFICATION  
+4. For **skills/projects**, use:  
+   - USER_SKILL + USER_SKILL_INFO (joined with PRACTICE, PRACTICE_AREA, PRACTICE_PRODUCT_TECHNOLOGY).  
+5. For **high impact work/assets**, use HIGH_IMPACT_ASSETS (TITLE, DESCRIPTION, BUSINESS_IMPACT, VISIBILITY_ADOPTION).  
+6. Always generate **valid DB2 SQL** using ANSI JOIN syntax.  
+7. If multiple tables are relevant, UNION results with consistent column names.  
+8. Always end the query with a semicolon.  
+9. Return **only the SQL query**, with no natural language explanation. 
+10. Only use columns that exist in the schema provided. 
+11. If you use aggregate functions (COUNT, SUM, MAX, etc.), include all non-aggregated columns in a GROUP BY clause. 
+12. Do not generate invalid columns or aliases. 
+13. Prefer simple SELECT statements. 
+14. Always return SQL that can run without syntax errors in Db2.
+
+### STRICTLY USE THE ABOVE GIVEN INSTRUCTION ###
 
 ### Query to Generate:  
 {natural_query}
