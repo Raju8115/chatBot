@@ -17,12 +17,12 @@ def getModel():
         try:
             creds = Credentials(
                 url="https://ca-tor.ml.cloud.ibm.com",
-                api_key="UOtMgA5jazmnI2PsrmBa9s18jIfqGRBVKrapNaxrF0V6",
+                api_key="sXHGGPztL9ML7n8tyt9JE4fuLpmkQhD-Irqc7_L5ha4z",
             )
             _model_instance = ModelInference(
                 model_id="meta-llama/llama-3-3-70b-instruct",
                 credentials=creds,
-                project_id="f06b08b3-b5a1-4c67-ae23-92ce02754a66",
+                project_id="a128f3df-0c31-4706-9ef4-f008780a34b9",
             )
         except Exception as e:
             print("Error initializing model:", str(e))
